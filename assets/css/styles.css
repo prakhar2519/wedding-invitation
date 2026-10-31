@@ -1,0 +1,239 @@
+/* ================================================================
+   ROYAL WEDDING INVITATION PLATFORM - CUSTOM LUXURY STYLES
+   Inspired by luxury Indian weddings (Beelwa Palace, Jaipur)
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-deep: #580d19;      /* Royal Maroon / Crimson */
+  --primary-rich: #72091c;
+  --gold-glow: #d4af37;        /* Royal Gold */
+  --gold-bright: #f3e5ab;
+  --gold-dark: #aa7c11;
+  --ivory-warm: #fffdfa;
+  --parchment: #fdfaf5;
+  --text-dark: #2d1810;
+  --accent-emerald: #0b4f3f;
+  --accent-blush: #fbf2eb;
+}
+
+/* Base resets & typography */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+  background-color: #120507;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+  line-height: 1.4 !important;
+  overflow: visible !important;
+}
+
+.couple-names-display {
+  display: inline-block;
+  padding: 0.2em 0.25em;
+  line-height: 1.35;
+  overflow: visible;
+  background: linear-gradient(135deg, #fff9e6 0%, #f7d070 35%, #d4af37 75%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Shimmering Gold Text & Borders */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f7d070 0%, #d4af37 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+}
+
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.gold-box-shadow {
+  box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+}
+
+/* Theme Variances */
+body.theme-jaipur {
+  --primary-deep: #540c17;
+  --primary-rich: #6b101f;
+  --gold-glow: #d4af37;
+  --ivory-warm: #fffbf5;
+}
+
+body.theme-pastel {
+  --primary-deep: #44323b;
+  --primary-rich: #9e6d7d;
+  --gold-glow: #d49a89;
+  --ivory-warm: #fcf8f6;
+  --text-dark: #3a2e34;
+}
+
+body.theme-emerald {
+  --primary-deep: #062f26;
+  --primary-rich: #0c4e40;
+  --gold-glow: #e0b04e;
+  --ivory-warm: #f7faf8;
+}
+
+body.theme-midnight {
+  --primary-deep: #0b132b;
+  --primary-rich: #1c2541;
+  --gold-glow: #e6af2e;
+  --ivory-warm: #f4f6fa;
+}
+
+/* Wax Seal Envelope Overlay */
+#envelope-modal {
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+
+#envelope-modal.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.wax-seal {
+  background: radial-gradient(circle at 35% 35%, #a51c30 0%, #750f1f 60%, #46050e 100%);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.8);
+  border: 3px solid #6b0c1b;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 
+    0 15px 35px rgba(212, 175, 55, 0.4),
+    0 0 20px rgba(165, 28, 48, 0.8),
+    inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Royal Arch / Jharokha framing */
+.jharokha-frame {
+  position: relative;
+  border: 2px solid #d4af37;
+  border-radius: 120px 120px 16px 16px;
+  background-color: var(--ivory-warm);
+}
+
+.jharokha-frame::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px dashed rgba(212, 175, 55, 0.5);
+  border-radius: 114px 114px 10px 10px;
+  pointer-events: none;
+}
+
+/* Rotating Mandala background decoration */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 90s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-slow 110s linear infinite reverse;
+}
+
+/* Shimmer wave */
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #d4af37 0%, #fff7d6 50%, #aa7c11 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 5s ease-in-out infinite;
+}
+
+/* Floating Music Player button */
+.music-toggle-btn {
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* Studio Drawer transitions */
+#studio-drawer {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a080c;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f3e5ab;
+}
+
+/* Glassmorphism cards */
+.glass-royal-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Floating animation */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Wedding Invitation | Digital Invitation Platform</title>
+  <meta name="description" content="Customizable Luxury Indian Wedding Invitation Platform for Bride & Groom Families.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Luxury Stylesheet (Cache-busted) -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.2">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royal: {
+              maroon: '#580d19',
+              deep: '#3b060d',
+              gold: '#d4af37',
+              goldlight: '#f5e7b2',
+              cream: '#fffdf9',
+              emerald: '#083b32'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="theme-jaipur min-h-screen text-stone-900 selection:bg-amber-500 selection:text-white">
+
+  <!-- ========================================================
+       1. INTERACTIVE WAX SEAL ROYAL ENVELOPE MODAL (100% DYNAMIC)
+       ======================================================== -->
+  <div id="envelope-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/95 backdrop-blur-md p-4">
+    <div class="relative w-full max-w-lg bg-gradient-to-b from-[#460911] to-[#250307] border-2 border-amber-400/80 rounded-3xl p-8 text-center shadow-2xl overflow-hidden">
+      
+      <!-- Royal Corner Ornaments -->
+      <div class="absolute top-3 left-3 text-amber-300 text-xl opacity-60">⚜️</div>
+      <div class="absolute top-3 right-3 text-amber-300 text-xl opacity-60">⚜️</div>
+      <div class="absolute bottom-3 left-3 text-amber-300 text-xl opacity-60">⚜️</div>
+      <div class="absolute bottom-3 right-3 text-amber-300 text-xl opacity-60">⚜️</div>
+
+      <!-- Sacred Invocation -->
+      <div class="mb-4">
+        <span class="text-amber-400 text-3xl font-serif">ॐ</span>
+        <p class="text-amber-200/90 text-xs font-cinzel tracking-widest mt-1">|| SHREE GANESHAY NAMAH ||</p>
+      </div>
+
+      <h2 class="text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold mb-2">Auspicious Wedding Invitation</h2>
+      
+      <!-- Dynamic Couple Names on Envelope -->
+      <h1 id="envelope-couple-names" class="text-4xl md:text-5xl font-script text-amber-100 mb-4 drop-shadow-md py-1 overflow-visible leading-relaxed">
+        Prakhar & Uravashi
+      </h1>
+
+      <p id="envelope-invitation-text" class="text-amber-200/80 text-sm font-serif italic mb-2 max-w-sm mx-auto leading-relaxed">
+        With the divine blessings of our ancestors, we request the pleasure of your gracious presence.
+      </p>
+
+      <p id="envelope-inviting-families" class="text-[11px] uppercase tracking-wider text-amber-300/90 font-medium mb-6">
+        Warmly welcomed by the Families
+      </p>
+
+      <!-- Royal Wax Seal with Dynamic Initials Monogram -->
+      <div class="flex flex-col items-center justify-center my-3">
+        <button id="wax-seal-btn" title="Click to break the royal wax seal and open the invitation"
+                class="wax-seal w-28 h-28 rounded-full flex flex-col items-center justify-center text-amber-100 group">
+          <span id="wax-seal-initials" class="text-2xl font-serif font-black tracking-tighter text-amber-200 group-hover:scale-110 transition-transform">
+            P & U
+          </span>
+          <span class="text-[9px] uppercase tracking-wider text-amber-300/80 font-bold mt-1">ROYAL SEAL</span>
+        </button>
+        <button id="open-invite-text-btn" class="mt-5 px-6 py-2 rounded-full border border-amber-400/50 bg-amber-950/60 hover:bg-amber-900 text-amber-200 text-xs font-cinzel font-semibold tracking-widest transition-colors shadow-lg">
+          TAP SEAL TO UNWRAP & OPEN 💌
+        </button>
+      </div>
+
+      <p class="text-[11px] text-amber-400/60 mt-4 tracking-wide font-light">
+        🎵 Plays traditional Shehnai melody upon opening
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. TOP FLOATING CONTROLS: FAMILY PERSPECTIVE & AUDIO & STUDIO
+       ======================================================== -->
+  <header class="sticky top-0 z-40 bg-[#29050b]/90 backdrop-blur-md border-b border-amber-500/30 px-4 py-3 text-amber-100">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand & Hashtag -->
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 text-xl font-bold font-serif">⚜️</span>
+        <div>
+          <span class="text-xs uppercase font-cinzel tracking-wider text-amber-300 block font-bold couple-title">Wedding Invitation</span>
+          <span id="hero-hashtag" class="text-[11px] text-amber-200/70 font-mono">#PU</span>
+        </div>
+      </div>
+
+      <!-- Family Perspective Switcher Pills (Key feature for Bride vs Groom) -->
+      <div class="flex items-center gap-1 bg-black/40 p-1 rounded-full border border-amber-500/40 text-xs">
+        <button data-side="joint" class="side-pill-btn px-3 py-1.5 rounded-full transition-all duration-200 bg-amber-500 text-black font-bold shadow">
+          👑 Joint Invite
+        </button>
+        <button data-side="bride" class="side-pill-btn px-3 py-1.5 rounded-full transition-all duration-200 text-amber-200 hover:bg-amber-900/40">
+          🌸 Ladkiwale (Bride)
+        </button>
+        <button data-side="groom" class="side-pill-btn px-3 py-1.5 rounded-full transition-all duration-200 text-amber-200 hover:bg-amber-900/40">
+          ✨ Ladkewale (Groom)
+        </button>
+      </div>
+
+      <!-- Audio Player & Studio Drawer Buttons -->
+      <div class="flex items-center gap-2">
+        <!-- Floating Music Button -->
+        <button id="music-toggle-btn" class="music-toggle-btn flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black text-xs font-bold px-3.5 py-1.5 rounded-full shadow">
+          <span id="music-icon">🎵</span>
+          <span id="music-label" class="hidden sm:inline">Play Shehnai</span>
+        </button>
+
+        <!-- Live Customizer Toggle Button -->
+        <button id="studio-toggle-btn" class="flex items-center gap-1.5 bg-stone-900 hover:bg-stone-800 border border-amber-400/60 text-amber-200 text-xs font-medium px-3.5 py-1.5 rounded-full transition shadow">
+          <span>✏️</span>
+          <span class="font-bold">Creator Studio</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       3. DYNAMIC PERSONALIZED GUEST GREETING BANNER
+       ======================================================== -->
+  <section id="personalized-guest-banner" class="hidden bg-gradient-to-r from-amber-950 via-[#450912] to-amber-950 border-b border-amber-400/40 py-4 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <span id="guest-side-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-400 text-stone-950 mb-2 shadow">
+        🌸 Honored Guest of the Bride's Family (Ladkiwale)
+      </span>
+      <h3 class="text-2xl md:text-3xl font-serif font-bold text-amber-100">
+        Namaste, <span id="guest-salutation" class="text-amber-300 underline decoration-amber-500 underline-offset-4">Guest</span>
+      </h3>
+      <p id="guest-invitation-text" class="text-xs md:text-sm text-amber-200/90 font-light mt-1 max-w-2xl mx-auto leading-relaxed">
+        We cordially invite you and your family to celebrate our special moments.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. HERO BANNER & SAVE THE DATE COUNTDOWN
+       ======================================================== -->
+  <main class="relative">
+    <section class="relative min-h-[90vh] flex items-center justify-center text-center px-4 py-16 bg-gradient-to-b from-[#29050b] via-[#4d0b16] to-[#1a0408] text-amber-100 overflow-hidden">
+      
+      <!-- Background Rotating Mandala -->
+      <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+        <svg class="w-[850px] h-[850px] animate-spin-slow text-amber-300" viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="0.5" fill="none" />
+          <path d="M50 5 Q55 25 50 45 Q45 25 50 5 Z" />
+          <path d="M50 95 Q55 75 50 55 Q45 75 50 95 Z" />
+          <path d="M5 50 Q25 55 45 50 Q25 45 5 50 Z" />
+          <path d="M95 50 Q75 55 55 50 Q75 45 95 50 Z" />
+          <path d="M18 18 Q35 30 45 45 Q30 35 18 18 Z" />
+          <path d="M82 82 Q65 70 55 55 Q70 65 82 82 Z" />
+          <path d="M18 82 Q30 65 45 55 Q35 70 18 82 Z" />
+          <path d="M82 18 Q70 35 55 45 Q65 30 82 18 Z" />
+        </svg>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <div class="mb-4 inline-flex items-center gap-2 px-4 py-1 rounded-full border border-amber-400/40 bg-black/40 text-amber-300 text-xs tracking-widest font-cinzel">
+          <span>ॐ</span>
+          <span>|| SHREE GANESHAY NAMAH ||</span>
+          <span>ॐ</span>
+        </div>
+
+        <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-amber-300 font-semibold mb-3">
+          SAVE THE DATE & CELEBRATE THE UNION OF
+        </p>
+
+        <!-- Couple Names (With generous flourish padding to prevent clipping cursive ascenders) -->
+        <h1 class="text-5xl sm:text-7xl md:text-8xl font-script mb-4 overflow-visible py-2">
+          <span id="hero-groom-name" class="couple-names-display">Prakhar</span>
+          <span class="text-3xl sm:text-5xl font-serif text-amber-400 mx-2 inline-block align-middle">&</span>
+          <span id="hero-bride-name" class="couple-names-display">Uravashi</span>
+        </h1>
+
+        <p id="hero-quote" class="text-base md:text-xl font-serif italic text-amber-200/90 mb-6 max-w-2xl mx-auto leading-relaxed">
+          "Two souls, two families, united by destiny under auspicious skies."
+        </p>
+
+        <!-- Venue Badge -->
+        <div class="inline-flex items-center gap-2 bg-amber-950/60 border border-amber-400/50 px-6 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider text-amber-200 mb-10 shadow-lg">
+          <span>🏰</span>
+          <span id="hero-venue">Jahwar Bhawan, Beawar</span>
+        </div>
+
+        <!-- Live Countdown Timer -->
+        <div class="max-w-2xl mx-auto bg-black/50 backdrop-blur-md p-6 rounded-3xl border border-amber-500/40 shadow-2xl">
+          <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-4 font-cinzel">
+            ⏳ COUNTDOWN TO SHUBH MUHURAT
+          </h4>
+          <div class="grid grid-cols-4 gap-3 md:gap-6 text-center">
+            <div class="bg-gradient-to-b from-[#400911] to-[#250307] border border-amber-400/50 rounded-2xl p-3 md:p-4 shadow-inner">
+              <span id="countdown-days" class="text-2xl sm:text-4xl md:text-5xl font-cinzel font-bold text-amber-300 block">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider text-amber-200/70 font-medium">Days</span>
+            </div>
+            <div class="bg-gradient-to-b from-[#400911] to-[#250307] border border-amber-400/50 rounded-2xl p-3 md:p-4 shadow-inner">
+              <span id="countdown-hours" class="text-2xl sm:text-4xl md:text-5xl font-cinzel font-bold text-amber-300 block">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider text-amber-200/70 font-medium">Hours</span>
+            </div>
+            <div class="bg-gradient-to-b from-[#400911] to-[#250307] border border-amber-400/50 rounded-2xl p-3 md:p-4 shadow-inner">
+              <span id="countdown-minutes" class="text-2xl sm:text-4xl md:text-5xl font-cinzel font-bold text-amber-300 block">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider text-amber-200/70 font-medium">Minutes</span>
+            </div>
+            <div class="bg-gradient-to-b from-[#400911] to-[#250307] border border-amber-400/50 rounded-2xl p-3 md:p-4 shadow-inner">
+              <span id="countdown-seconds" class="text-2xl sm:text-4xl md:text-5xl font-cinzel font-bold text-amber-300 block">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider text-amber-200/70 font-medium">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="#events-section" class="px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold text-xs uppercase tracking-widest shadow-xl transition-transform hover:scale-105">
+            View Ceremonies 📜
+          </a>
+          <a href="#rsvp-section" class="px-6 py-3 rounded-full border border-amber-400 bg-stone-900/80 hover:bg-stone-900 text-amber-200 font-bold text-xs uppercase tracking-widest transition-colors shadow">
+            RSVP Online ✍️
+          </a>
+          <a href="#hospitality-section" class="px-6 py-3 rounded-full border border-amber-400/40 bg-amber-950/40 hover:bg-amber-900/60 text-amber-200 text-xs font-semibold tracking-wider">
+            Guest Concierge & Help 🛎️
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. MEET THE BRIDE & GROOM & BOTH FAMILIES
+         ======================================================== -->
+    <section class="py-20 px-4 bg-gradient-to-b from-[#1a0408] via-[#2c0810] to-[#150306] text-amber-100">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">The Sacred Union</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-amber-100 mt-2">
+            Meet The Couple & Families
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          
+          <!-- Groom's Side Card -->
+          <div id="card-groom-family" class="glass-royal-card rounded-3xl p-8 border border-amber-400/50 text-stone-900 relative overflow-hidden transition-all duration-300">
+            <div class="absolute top-4 right-4 bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              ✨ The Groom's Side (Ladkewale)
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
+              <img id="family-groom-img" src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=80" 
+                   alt="Groom" class="w-32 h-32 rounded-2xl object-cover border-2 border-amber-500 shadow-lg bg-stone-100">
+              <div class="text-center sm:text-left">
+                <span class="text-xs uppercase text-amber-800 font-bold tracking-widest">The Groom</span>
+                <h3 id="family-groom-name" class="text-3xl font-serif font-bold text-stone-900">Prakhar Jain</h3>
+                <p id="family-groom-parents" class="text-sm text-stone-700 font-medium mt-1">Son of Smt. Kalpana & Shri Padam Jain</p>
+                <p id="family-groom-grand" class="text-xs text-stone-500 mt-0.5">Grandson of Late Smt. & Late Shri K.L. Jain</p>
+              </div>
+            </div>
+            <p id="family-groom-bio" class="text-stone-600 text-sm italic font-serif leading-relaxed bg-amber-50/70 p-4 rounded-xl border border-amber-200/50 mb-4">
+              "Warm-hearted, visionary, and adventurous, embarking on a lifelong journey of companionship and love."
+            </p>
+          </div>
+
+          <!-- Bride's Side Card -->
+          <div id="card-bride-family" class="glass-royal-card rounded-3xl p-8 border border-amber-400/50 text-stone-900 relative overflow-hidden transition-all duration-300">
+            <div class="absolute top-4 right-4 bg-rose-100 text-rose-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              🌸 The Bride's Side (Ladkiwale)
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
+              <img id="family-bride-img" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
+                   alt="Bride" class="w-32 h-32 rounded-2xl object-cover border-2 border-amber-500 shadow-lg bg-stone-100">
+              <div class="text-center sm:text-left">
+                <span class="text-xs uppercase text-rose-800 font-bold tracking-widest">The Bride</span>
+                <h3 id="family-bride-name" class="text-3xl font-serif font-bold text-stone-900">Uravashi Sharma</h3>
+                <p id="family-bride-parents" class="text-sm text-stone-700 font-medium mt-1">Daughter of Smt. Sunita & Shri Rajeev Sharma</p>
+                <p id="family-bride-grand" class="text-xs text-stone-500 mt-0.5">Granddaughter of Smt. & Shri O.P. Sharma</p>
+              </div>
+            </div>
+            <p id="family-bride-bio" class="text-stone-600 text-sm italic font-serif leading-relaxed bg-rose-50/70 p-4 rounded-xl border border-rose-200/50 mb-4">
+              "Graceful, affectionate, and full of warmth, bringing boundless joy and celebration to our lives."
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. CEREMONIES & ITINERARY TIMELINE (CUSTOMIZABLE)
+         ======================================================== -->
+    <section id="events-section" class="py-20 px-4 bg-gradient-to-b from-[#150306] via-[#24060c] to-[#150306] text-amber-100">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">Celebrations Schedule</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-amber-100 mt-2">
+            Wedding Ceremonies
+          </h2>
+          <p class="text-xs md:text-sm text-amber-200/70 font-light mt-2 max-w-lg mx-auto">
+            Join us as we celebrate sacred traditions, vibrant colors, music, and royal feasts.
+          </p>
+
+          <!-- Timeline Filter Controls -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+            <button data-filter="all" class="event-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-amber-600 text-white shadow">
+              All Functions
+            </button>
+            <button data-filter="bride" class="event-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200">
+              🌸 Bride's Functions
+            </button>
+            <button data-filter="groom" class="event-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200">
+              ✨ Groom's Functions
+            </button>
+            <button data-filter="joint" class="event-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-stone-100 text-stone-700 hover:bg-stone-200">
+              👑 Joint Celebrations
+            </button>
+          </div>
+        </div>
+
+        <!-- Timeline container -->
+        <div id="events-timeline-container" class="mt-8 space-y-6">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         7. DEDICATED HOSPITALITY & CONCIERGE DESKS
+         ======================================================== -->
+    <section id="hospitality-section" class="py-16 px-4 bg-[#1f050a] text-amber-100 border-y border-amber-500/20">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">Hospitality & Guest Concierge</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mt-2">
+            We Are Here To Assist You
+          </h2>
+          <p class="text-xs md:text-sm text-amber-200/70 max-w-xl mx-auto mt-2">
+            For airport transfers, station pickup, hotel room allocations, and itinerary queries, reach out directly to your family hospitality desk.
+          </p>
+        </div>
+
+        <div id="hospitality-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. VENUE, DIRECTIONS & ACCOMMODATION
+         ======================================================== -->
+    <section class="py-20 px-4 bg-gradient-to-b from-[#150306] via-[#2a060e] to-[#150306] text-amber-100">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">Destination & Venue</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mt-2">
+            Wedding Venue & Location
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-3"></div>
+        </div>
+
+        <div class="bg-white/95 rounded-3xl p-8 border border-amber-400/60 shadow-2xl text-stone-900 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-900 mb-3">
+              <span>🏰</span>
+              <span>Celebration Destination</span>
+            </div>
+            <h3 id="venue-display-name" class="text-3xl font-serif font-bold text-stone-900 mb-2">Jahwar Bhawan</h3>
+            <p id="venue-display-address" class="text-sm text-stone-700 leading-relaxed mb-6 font-medium">
+              Jahwar Bhawan, Station Road, Beawar, Rajasthan
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <a id="venue-maps-link" href="https://maps.google.com/?q=Jahwar+Bhawan+Beawar" target="_blank" rel="noopener noreferrer"
+                 class="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg transition">
+                <span>📍 Open In Google Maps</span>
+              </a>
+              <button onclick="document.getElementById('studio-drawer').classList.remove('translate-x-full')" 
+                      class="px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-300 font-bold text-xs tracking-wider transition">
+                <span>✏️ Edit Location</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Venue Showcase Card -->
+          <div class="relative rounded-2xl overflow-hidden border-2 border-amber-400/50 shadow-xl group">
+            <img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Wedding Venue" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+              <span class="text-white text-xs font-semibold tracking-wider bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm">
+                Auspicious Wedding Destination
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. INTERACTIVE RSVP FORM
+         ======================================================== -->
+    <section id="rsvp-section" class="py-20 px-4 bg-gradient-to-b from-[#150306] via-[#2d0710] to-[#150306] text-amber-100">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">Join The Celebration</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-amber-100 mt-2">
+            Confirm Your Presence (RSVP)
+          </h2>
+          <p class="text-xs md:text-sm text-amber-200/70 mt-2">
+            Kindly confirm your attendance to help us arrange your hospitality, meals, and comfortable stay.
+          </p>
+        </div>
+
+        <div class="bg-white/95 rounded-3xl p-8 border border-amber-400/60 shadow-2xl text-stone-900">
+          
+          <div id="rsvp-success-msg" class="hidden mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-sm text-center font-medium">
+            <p>🎉 Thank you! Your RSVP has been confirmed.</p>
+            <a id="rsvp-direct-wa-sync" href="#" target="_blank" class="hidden inline-flex items-center gap-1.5 mt-2 px-4 py-1.5 bg-emerald-700 text-white rounded-lg text-xs font-bold shadow hover:bg-emerald-800">
+              <span>📲 Send Confirmation Directly to Host on WhatsApp</span>
+            </a>
+          </div>
+
+          <form id="guest-rsvp-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Your Full Name / Family *</label>
+                <input type="text" id="rsvp-name" required placeholder="Enter Your Full Name / Family Name" 
+                       class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Phone / WhatsApp Number</label>
+                <input type="tel" id="rsvp-phone" placeholder="e.g. +91 98290 12345" 
+                       class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Family Side *</label>
+                <select id="rsvp-side" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm bg-white">
+                  <option value="groom">✨ Groom's Side (Ladkewale)</option>
+                  <option value="bride">🌸 Bride's Side (Ladkiwale)</option>
+                  <option value="joint">👑 Joint / Mutual Friends</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Will You Attend? *</label>
+                <select id="rsvp-attendance" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm bg-white">
+                  <option value="yes">Joyfully Accept (Yes, Attending)</option>
+                  <option value="no">Regretfully Decline</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Adults</label>
+                <input type="number" id="rsvp-adults" min="1" max="15" value="2" 
+                       class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm">
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Children (Kids)</label>
+                <input type="number" id="rsvp-children" min="0" max="10" value="0" 
+                       class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm">
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Dietary</label>
+                <select id="rsvp-dietary" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm bg-white">
+                  <option value="Pure Vegetarian">Pure Vegetarian</option>
+                  <option value="Jain Pure Veg">Jain Pure Veg (No Onion/Garlic)</option>
+                  <option value="Vegan">Vegan</option>
+                  <option value="Standard">Standard</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Station / Airport Pickup Needed?</label>
+              <select id="rsvp-pickup" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm bg-white">
+                <option value="No (Self Drive)">No, we have our own transport / cab</option>
+                <option value="Yes (Beawar Railway Station)">Yes, need pickup from Beawar Station</option>
+                <option value="Yes (Jaipur/Kishangarh Airport)">Yes, need pickup from Airport</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase font-bold text-stone-700 tracking-wider mb-1">Heartfelt Message / Travel Details</label>
+              <textarea id="rsvp-message" rows="3" placeholder="Share your arrival timing or warm wishes for the couple..." 
+                        class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-600 text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-bold text-xs uppercase tracking-widest shadow-xl transition-all">
+              Submit Royal RSVP ✉️
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. BLESSINGS & WISHES LIVE WALL
+         ======================================================== -->
+    <section class="py-20 px-4 bg-gradient-to-b from-[#150306] via-[#24060c] to-[#120305] text-amber-100">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold">Love & Blessings</span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-amber-100 mt-2">
+            The Blessings Wall
+          </h2>
+          <p class="text-xs md:text-sm text-amber-200/70 mt-2">
+            Shower the bride and groom with your warm blessings, congratulations, and love.
+          </p>
+        </div>
+
+        <div class="max-w-xl mx-auto bg-stone-900/90 border border-amber-500/40 p-6 rounded-2xl mb-12 shadow-xl">
+          <form id="guest-wish-form" class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input type="text" id="wish-name" required placeholder="Your Name" 
+                     class="sm:col-span-2 px-3 py-2 rounded-lg bg-black/60 border border-amber-400/30 text-amber-100 text-xs focus:outline-none focus:border-amber-400">
+              <select id="wish-side" class="px-3 py-2 rounded-lg bg-black/60 border border-amber-400/30 text-amber-100 text-xs focus:outline-none">
+                <option value="groom">✨ Groom's Guest</option>
+                <option value="bride">🌸 Bride's Guest</option>
+                <option value="joint">👑 Joint</option>
+              </select>
+            </div>
+            <div class="flex gap-2">
+              <input type="text" id="wish-text" required placeholder="Write your heartfelt blessing..." 
+                     class="flex-1 px-3 py-2 rounded-lg bg-black/60 border border-amber-400/30 text-amber-100 text-xs focus:outline-none focus:border-amber-400">
+              <select id="wish-emoji" class="w-16 px-2 py-2 rounded-lg bg-black/60 border border-amber-400/30 text-amber-100 text-sm focus:outline-none">
+                <option value="🌸">🌸</option>
+                <option value="❤️">❤️</option>
+                <option value="🥂">🥂</option>
+                <option value="🎉">🎉</option>
+                <option value="🪔">🪔</option>
+              </select>
+              <button type="submit" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider">
+                Post
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="wishes-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-black text-center text-amber-300/80 border-t border-amber-500/20 text-xs">
+      <div class="max-w-4xl mx-auto space-y-3">
+        <span class="text-2xl">⚜️</span>
+        <h4 class="text-lg font-serif font-bold text-amber-200 couple-title">Wedding Invitation</h4>
+        <p class="text-amber-200/60 max-w-md mx-auto">
+          Warmly welcomed by the Families.<br>
+          Celebrated with love and auspicious traditions.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========================================================
+       11. CREATOR STUDIO SLIDE-OUT DRAWER (FOR ALL USERS)
+       ======================================================== -->
+  <aside id="studio-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-xl bg-stone-950 text-stone-100 border-l border-amber-500/40 shadow-2xl transform translate-x-full overflow-y-auto">
+    <div class="p-6">
+      
+      <!-- Studio Header & Save Indicator -->
+      <div class="flex items-center justify-between pb-4 border-b border-stone-800">
+        <div>
+          <span class="text-[10px] uppercase font-cinzel font-bold tracking-widest text-amber-400">Creator Studio</span>
+          <h3 class="text-xl font-serif font-bold text-amber-100">Customize Wedding Invitation</h3>
+        </div>
+        <button id="studio-close-btn" class="p-2 rounded-full hover:bg-stone-800 text-stone-400 hover:text-white text-lg">
+          ✕
+        </button>
+      </div>
+
+      <!-- Save notification banner -->
+      <div id="studio-save-status" class="hidden mt-3 p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500 text-emerald-300 text-xs text-center font-bold transition-opacity duration-300">
+        ✅ All changes saved to browser storage!
+      </div>
+
+      <div class="space-y-8 mt-6">
+        
+        <!-- SECTION 1: THEME & PALETTE -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800 space-y-3">
+          <h4 class="text-xs uppercase font-bold text-amber-400 tracking-wider">🎨 Theme & Palette</h4>
+          <div>
+            <label class="block text-[11px] text-stone-400 mb-1">Visual Theme Palette</label>
+            <select id="studio-theme" class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-amber-100 focus:outline-none">
+              <option value="jaipur">👑 Royal Palace (Regal Crimson & Gold)</option>
+              <option value="pastel">🌸 Pastel Floral Bloom (Blush & Rose Gold)</option>
+              <option value="emerald">🌿 Royal Emerald & Ivory Heritage</option>
+              <option value="midnight">✨ Midnight Starlight & Champagne</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SECTION 2: WEDDING MUSIC & AUDIO MANAGER -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-amber-500/40 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400 text-base">🎵</span>
+              <h4 class="text-xs uppercase font-bold text-amber-300 tracking-wider">Wedding Music & Tune</h4>
+            </div>
+            <span id="music-status-pill" class="text-[10px] px-2.5 py-0.5 rounded-full bg-stone-800 text-amber-300 border border-stone-700 font-mono">
+              Ready
+            </span>
+          </div>
+
+          <p class="text-[11px] text-stone-400 leading-relaxed">
+            Upload your favorite wedding song (MP3 / audio file), provide an audio link, or choose from traditional instruments.
+          </p>
+
+          <!-- Option A: Upload MP3 Audio File -->
+          <div class="p-3 bg-stone-800/90 rounded-xl border border-amber-400/30">
+            <label class="block text-[11px] font-bold text-amber-300 mb-1">📁 Upload Custom MP3 / Audio File</label>
+            <input type="file" id="upload-music-file" accept="audio/*" 
+                   class="w-full text-xs text-stone-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-600 file:text-black hover:file:bg-amber-500 cursor-pointer">
+            <p id="loaded-music-filename" class="hidden text-[11px] text-emerald-400 font-medium mt-1.5">
+              ✅ Loaded: Custom Song
+            </p>
+          </div>
+
+          <!-- Option B: Direct Audio URL -->
+          <div>
+            <label class="block text-[11px] text-stone-400 mb-1">Or Enter Direct Audio URL (.mp3 / .wav / stream)</label>
+            <input type="url" id="studio-audio-url" placeholder="https://example.com/wedding_music.mp3" 
+                   class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-amber-100 focus:outline-none">
+          </div>
+
+          <!-- Option C: Traditional Instrument Melodies -->
+          <div>
+            <label class="block text-[11px] text-stone-400 mb-1">Or Choose Traditional Instrument Raga</label>
+            <select id="studio-music-tone" class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-amber-100 focus:outline-none">
+              <option value="yaman">🎺 Royal Shehnai Utsav (Raag Yaman - Festive Auspicious Wedding)</option>
+              <option value="bhairavi">🎶 Romantic Sitar & Flute (Raag Bhairavi - Soft Melodic Harmony)</option>
+              <option value="temple">🪈 Temple Flute & Chimes (Sacred Vedic Atmosphere)</option>
+            </select>
+          </div>
+
+          <!-- Volume & Test Audio Controls -->
+          <div class="pt-2 border-t border-stone-800 space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-stone-400 text-[11px]">Music Volume</span>
+              <span id="volume-display" class="text-amber-400 font-mono text-[11px]">70%</span>
+            </div>
+            <input type="range" id="studio-audio-volume" min="0" max="1" step="0.05" value="0.7" 
+                   class="w-full accent-amber-500 cursor-pointer">
+
+            <button id="studio-test-audio-btn" type="button" 
+                    class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow">
+              <span id="test-audio-icon">▶️</span>
+              <span id="test-audio-label">Preview Tune</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SECTION 3: 1-CLICK WHATSAPP SHARE GENERATOR -->
+        <div class="bg-gradient-to-br from-emerald-950/70 to-stone-900 p-5 rounded-2xl border border-emerald-500/40">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-emerald-400 text-lg">💬</span>
+            <h4 class="text-xs uppercase font-bold text-emerald-300 tracking-wider">1-Click WhatsApp Invite Generator</h4>
+          </div>
+          <p class="text-[11px] text-stone-400 mb-3">
+            Enter guest name and family side to instantly generate a custom WhatsApp message and unique link.
+          </p>
+
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <input type="text" id="studio-wa-guest-name" placeholder="Enter Guest/Family Name" 
+                   class="px-3 py-2 rounded-xl bg-black/60 border border-stone-700 text-xs text-stone-200">
+            <select id="studio-wa-side" class="px-3 py-2 rounded-xl bg-black/60 border border-stone-700 text-xs text-stone-200">
+              <option value="groom">✨ Groom's Side</option>
+              <option value="bride">🌸 Bride's Side</option>
+              <option value="joint">👑 Joint Invite</option>
+            </select>
+          </div>
+
+          <div class="bg-black/80 p-3 rounded-xl border border-emerald-500/20 text-[11px] text-emerald-200/90 font-mono whitespace-pre-wrap max-h-32 overflow-y-auto mb-2" id="studio-wa-preview-text">
+            Generating WhatsApp message preview...
+          </div>
+          <div class="text-[10px] text-stone-500 truncate mb-3" id="studio-wa-url-preview"></div>
+
+          <button id="studio-wa-copy-btn" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg">
+            <span>📋 Copy WhatsApp Invite & Link</span>
+          </button>
+        </div>
+
+        <!-- SECTION 3: GROOM & FAMILY DETAILS -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-blue-400 text-base">✨</span>
+              <h4 class="text-xs uppercase font-bold text-blue-300 tracking-wider">Groom's Family (Ladkewale)</h4>
+            </div>
+            <!-- Upload Photo Thumbnail -->
+            <img id="preview-groom-thumb" class="w-10 h-10 rounded-full object-cover border border-amber-400 bg-stone-800" alt="Groom Preview">
+          </div>
+
+          <!-- Photo Upload Input -->
+          <div class="p-3 bg-stone-800/60 rounded-xl border border-stone-700">
+            <label class="block text-[11px] font-semibold text-amber-300 mb-1">📷 Upload Groom's Photo</label>
+            <input type="file" id="upload-groom-photo" accept="image/*" 
+                   class="w-full text-xs text-stone-300 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-600 file:text-white hover:file:bg-amber-500 cursor-pointer">
+            <p class="text-[10px] text-stone-400 mt-1">Select from computer/phone (auto-compressed & stored locally)</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-groom-first" placeholder="Groom First Name" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="text" id="studio-groom-full" placeholder="Groom Full Name" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+          <input type="text" id="studio-groom-parents" placeholder="Parents (e.g. Smt. Kalpana & Shri Padam Jain)" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          <input type="text" id="studio-groom-grandparents" placeholder="Grandparents" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          <textarea id="studio-groom-bio" rows="2" placeholder="Groom short bio / description" 
+                    class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200"></textarea>
+
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-groom-hosp-poc" placeholder="Hospitality Contact Person" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="text" id="studio-groom-hosp-phone" placeholder="Helpline Phone" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+        </div>
+
+        <!-- SECTION 4: BRIDE & FAMILY DETAILS -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-rose-400 text-base">🌸</span>
+              <h4 class="text-xs uppercase font-bold text-rose-300 tracking-wider">Bride's Family (Ladkiwale)</h4>
+            </div>
+            <!-- Upload Photo Thumbnail -->
+            <img id="preview-bride-thumb" class="w-10 h-10 rounded-full object-cover border border-rose-400 bg-stone-800" alt="Bride Preview">
+          </div>
+
+          <!-- Photo Upload Input -->
+          <div class="p-3 bg-stone-800/60 rounded-xl border border-stone-700">
+            <label class="block text-[11px] font-semibold text-rose-300 mb-1">📷 Upload Bride's Photo</label>
+            <input type="file" id="upload-bride-photo" accept="image/*" 
+                   class="w-full text-xs text-stone-300 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-500 cursor-pointer">
+            <p class="text-[10px] text-stone-400 mt-1">Select from computer/phone (auto-compressed & stored locally)</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-bride-first" placeholder="Bride First Name" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="text" id="studio-bride-full" placeholder="Bride Full Name" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+          <input type="text" id="studio-bride-parents" placeholder="Parents (e.g. Smt. Sunita & Shri Rajeev Sharma)" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          <input type="text" id="studio-bride-grandparents" placeholder="Grandparents" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          <textarea id="studio-bride-bio" rows="2" placeholder="Bride short bio / description" 
+                    class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200"></textarea>
+
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-bride-hosp-poc" placeholder="Hospitality Contact Person" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="text" id="studio-bride-hosp-phone" placeholder="Helpline Phone" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+        </div>
+
+        <!-- SECTION 5: CEREMONIES / FUNCTIONS MANAGER (ADD / EDIT / DELETE) -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs uppercase font-bold text-amber-400 tracking-wider">📜 Functions & Ceremonies</h4>
+            <div class="flex items-center gap-1.5">
+              <button onclick="app.sortEventsChronologically(true)" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-amber-300 text-xs font-semibold border border-stone-700 shadow" title="Sort all ceremonies chronologically by date and time">
+                ⚡ Auto-Sort
+              </button>
+              <button onclick="app.openAddEventModal()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs flex items-center gap-1 shadow">
+                <span>➕ Add</span>
+              </button>
+            </div>
+          </div>
+          <p class="text-[11px] text-stone-400">
+            Ceremonies auto-order chronologically. You can also reorder manually using ▲/▼.
+          </p>
+
+          <div id="studio-events-list" class="space-y-2 max-h-64 overflow-y-auto pr-1">
+            <!-- Injected dynamically via app.js -->
+          </div>
+        </div>
+
+        <!-- SECTION 6: VENUE, MAPS & DATE -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800 space-y-3">
+          <h4 class="text-xs uppercase font-bold text-amber-400 tracking-wider">🏰 Venue & Map Details</h4>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-hashtag" placeholder="#Hashtag" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="datetime-local" id="studio-wedding-date" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+          <input type="text" id="studio-venue-name" placeholder="Venue Name (e.g. Jahwar Bhawan)" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="studio-venue-address" placeholder="Address (Station Road)" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+            <input type="text" id="studio-venue-city" placeholder="City (Beawar, Rajasthan)" 
+                   class="px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+          <div>
+            <label class="block text-[11px] text-stone-400 mb-1">Google Maps Direct Link</label>
+            <input type="text" id="studio-maps-url" placeholder="https://maps.google.com/..." 
+                   class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200">
+          </div>
+          <textarea id="studio-welcome-quote" rows="2" placeholder="Welcome Quote" 
+                    class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-200"></textarea>
+        </div>
+
+        <!-- PRIMARY SAVE BUTTON -->
+        <div>
+          <button onclick="app.saveStudioChanges()" 
+                  class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold text-xs uppercase tracking-widest shadow-xl">
+            💾 Save All Details & Update Invitation ✨
+          </button>
+        </div>
+
+        <!-- SECTION 7: MODERN RSVP TRACKER (ANALYTICS & GOOGLE SHEETS & WHATSAPP REPORT) -->
+        <div class="bg-stone-900/80 p-5 rounded-2xl border border-stone-800">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h4 class="text-xs uppercase font-bold text-amber-400 tracking-wider">📋 RSVP Live Dashboard</h4>
+              <span id="studio-rsvp-count" class="text-[10px] text-stone-400">0 Responses</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Analytics Tile Container -->
+          <div id="studio-rsvp-stats-grid">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Modern Action Buttons (Replacing plain CSV) -->
+          <div class="grid grid-cols-2 gap-2 mb-4">
+            <button onclick="app.copyRsvpsForGoogleSheets()" 
+                    class="px-3 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-1 shadow">
+              <span>📊 Copy for Google Sheets</span>
+            </button>
+            <button onclick="app.copyFamilyWhatsAppReport()" 
+                    class="px-3 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-amber-300 text-xs font-semibold flex items-center justify-center gap-1 border border-stone-700">
+              <span>💬 Copy WhatsApp Report</span>
+            </button>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto max-h-48 border border-stone-800 rounded-xl">
+            <table class="w-full text-left">
+              <thead class="bg-stone-800/80 text-[10px] uppercase text-stone-400">
+                <tr>
+                  <th class="p-2">Guest</th>
+                  <th class="p-2">Side</th>
+                  <th class="p-2">Status</th>
+                  <th class="p-2 text-center">Qty</th>
+                  <th class="p-2">Diet</th>
+                  <th class="p-2">Pickup</th>
+                  <th class="p-2 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="studio-rsvp-tbody" class="text-stone-300">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SECTION 8: BACKUP & RESET -->
+        <div class="flex gap-2 pt-2">
+          <button onclick="app.exportConfigJson()" 
+                  class="flex-1 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-300 text-xs font-medium">
+            💾 Export JSON Backup
+          </button>
+          <button onclick="app.resetData()" 
+                  class="px-4 py-2.5 rounded-xl bg-red-950/60 hover:bg-red-900/80 border border-red-800/40 text-red-300 text-xs font-medium">
+            Reset All
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       12. MODAL FOR ADDING / EDITING A CEREMONY
+       ======================================================== -->
+  <div id="event-editor-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div class="w-full max-w-md bg-stone-900 border border-amber-500/50 rounded-2xl p-6 text-stone-100 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-stone-800 mb-4">
+        <h3 id="event-modal-title" class="font-serif font-bold text-lg text-amber-200">Add Wedding Ceremony</h3>
+        <button onclick="document.getElementById('event-editor-modal').classList.add('hidden')" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-stone-300 mb-1">Ceremony Title *</label>
+          <input type="text" id="edit-event-name" placeholder="e.g. Haldi Rasam, Sangeet, Phere" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-stone-300 mb-1">Family Perspective</label>
+            <select id="edit-event-side" class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100">
+              <option value="joint">👑 Joint Celebration</option>
+              <option value="groom">✨ Groom's Side</option>
+              <option value="bride">🌸 Bride's Side</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-stone-300 mb-1">Date</label>
+            <input type="text" id="edit-event-date" placeholder="e.g. 14th March 2027" 
+                   class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-stone-300 mb-1">Time</label>
+            <input type="text" id="edit-event-time" placeholder="e.g. 07:30 PM onwards" 
+                   class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100">
+          </div>
+          <div>
+            <label class="block text-stone-300 mb-1">Dress Code</label>
+            <input type="text" id="edit-event-dress" placeholder="e.g. Sunshine Yellow" 
+                   class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-stone-300 mb-1">Ceremony Venue</label>
+          <input type="text" id="edit-event-venue" placeholder="e.g. Main Courtyard / Lawns" 
+                 class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100">
+        </div>
+
+        <div>
+          <label class="block text-stone-300 mb-1">Description / Ritual Details</label>
+          <textarea id="edit-event-desc" rows="2" placeholder="Brief note about the celebration..." 
+                    class="w-full px-3 py-2 rounded-xl bg-stone-800 border border-stone-700 text-stone-100"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 mt-5 pt-3 border-t border-stone-800">
+        <button onclick="document.getElementById('event-editor-modal').classList.add('hidden')" 
+                class="px-4 py-2 rounded-xl bg-stone-800 text-stone-300 text-xs">
+          Cancel
+        </button>
+        <button onclick="app.saveEventFromModal()" 
+                class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs">
+          Save Ceremony
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application JS (Cache-busted) -->
+  <script src="assets/js/app.js?v=2.7"></script>
+</body>
+</html>
